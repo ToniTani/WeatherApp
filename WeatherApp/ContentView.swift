@@ -9,9 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            
+            Spacer()
+            Text("Celcius")
+                .font(.title)
+            Text("Lappeenranta")
+                .font(.subheadline)
+            Spacer()
+        }
+    .background(Image("dark_background")
+    .resizable()
+    .scaledToFill()
+    .clipped())
+        .edgesIgnoringSafeArea([.top])
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
