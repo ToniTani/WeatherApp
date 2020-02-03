@@ -21,7 +21,13 @@ class WeatherService {
                 return
             }
             let weatherFeedback = try? JSONDecoder().decode(WeatherFeedback.self, from: data)
-        }
+            if let weatherFeedback = weatherFeedback {
+                let weather = weatherFeedback.main
+                completion(weather)
+            } else {
+                completion(nil)
+            }
         }
     }
+}
 
