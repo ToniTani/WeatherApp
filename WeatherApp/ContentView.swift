@@ -9,15 +9,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var weatherVM: WeatherViewModel
+    
+    init() {
+        self.weatherVM = WeatherViewModel()
+    }
 
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             
-            Spacer()
-            Text("Celcius")
-                .font(.title)
-            Text("Lappeenranta")
-                .font(.subheadline)
+            TextField("Enter city name", text: self.$weatherVM.cityName) {
+                self.weatherVM.search()
+            }.font(.custom("Arial", size: 40))
+                .padding()
+                .fixedSize()
+            
+            Text(self.weatherVM.temperature)
+            .font(.custom("Arial", size: 100))
+                           
+                           .foregroundColor(Color.black)
+                           .offset(y: 100)
+                           .padding()
             Spacer()
         }
     .background(Image("dark_background")
